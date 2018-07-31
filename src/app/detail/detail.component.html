@@ -1,0 +1,62 @@
+
+<form [formGroup]="profileForm" align="center">
+  <label>
+    First Name:
+    <input type="text" maxlength="10"formControlName="firstName" id="name" >
+    <span *ngIf="!profileForm.controls['firstName'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    Last Name:
+    <input type="text" maxlength="10"formControlName="lastName" >
+    <span *ngIf="!profileForm.controls['lastName'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    Email:
+    <input type="email" formControlName="email">
+    <span *ngIf="!profileForm.controls['email'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    ContactNo:
+    <input type="text" formControlName="contactno" maxlength="10" required>
+    <span *ngIf="!profileForm.controls['contactno'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    Password:
+    <input type="password" formControlName="pass" >
+    <span *ngIf="!profileForm.controls['pass'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    ConfirmPassword:
+    <input type="password" formControlName="confirmpassword" (keyup)="functiontest()">
+    <span *ngIf="!profileForm.controls['confirmpassword'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    Gender:
+    <input type="text" maxlength="10"formControlName="gender">
+    <span *ngIf="!profileForm.controls['gender'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <label>
+    EmpId:
+    <input type="text" maxlength="4"formControlName="EmpId">
+    <span *ngIf="!profileForm.controls['EmpId'].valid">*</span>
+  </label>
+  <br>
+  <br>
+  <button (click)='onButtonClick()' type="submit">Submit</button>
+
+
+</form>
