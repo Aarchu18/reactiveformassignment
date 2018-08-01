@@ -1,0 +1,14 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+.editbtn {
+  text-align: center;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+}
+td input{ 
+    border: 0px;
+    background-color: white;
+    width:125px;
+}

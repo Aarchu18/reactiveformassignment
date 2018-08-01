@@ -11,32 +11,33 @@ import { Router } from '@angular/router';
 
 
 export class DetailComponent implements OnInit {
+  passwordCheck:Boolean=false;
 
 
   profileForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]*$")]),
+    firstName: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("[a-zA-Z]+")]),
     lastName: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]*$")]),
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$")]),
     contactno: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]*')]),
-    pass: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")]),
-    confirmpassword: new FormControl('', [Validators.required, Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$")]),
-    gender: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]*$")]),
+    pass: new FormControl('', [Validators.required, Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}")]),
+    confirmpassword: new FormControl('', [Validators.required,Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}")]),
+    gender: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("^(?:m|M|male|Male|f|F|female|Female)$")]),
     EmpId: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.minLength(4), Validators.pattern('[0-9]*')]),
   });
   constructor(private routes: Router) {
 
   }
 
-  onButtonClick() {
+  onSubmit(){
     localStorage.setItem("data", JSON.stringify(this.profileForm.value));
     this.routes.navigate(['/showdetail']);
   }
   functiontest() {
     if (this.profileForm.value.pass !== this.profileForm.value.confirmpassword) {
-      console.log("Invalid");
+      this.passwordCheck=false;
     }
     else {
-      console.log("valid");
+     this.passwordCheck=true;
     }
   }
 

@@ -1,61 +1,75 @@
-<form [formGroup]="profileForm" align="center">
+<form [formGroup]="profileForm" align="center" (ngSubmit)="onSubmit()">
   <label>
     First Name:
     <input type="text" maxlength="10" formControlName="firstName">
-    <span *ngIf="!profileForm.controls['firstName'].valid">*</span>
+    <span style="color:Red" ng-show="profileForm.firstName.error.required">* </span>
+    <span *ngIf="!profileForm.controls['firstName'].valid &&
+    ( profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)">only alpha</span>
   </label>
   <br>
   <br>
   <label>
     Last Name:
     <input type="text" maxlength="10" formControlName="lastName">
-    <span *ngIf="!profileForm.controls['lastName'].valid">*</span>
+    <span style="color:Red" ng-show="profileForm.lastName.error.required">* </span>
+    <span *ngIf="!profileForm.controls['lastName'].valid &&
+    ( profileForm.controls['lastName'].dirty || profileForm.controls['lastName'].touched)">only alpha</span>
   </label>
   <br>
   <br>
   <label>
     Email:
     <input type="email" formControlName="email">
-    <span *ngIf="!profileForm.controls['email'].valid">*</span>
+    <span style="color:Red" ng-show="profileForm.email.error.required">* </span>
+    <span *ngIf="!profileForm.controls['email'].valid &&
+    ( profileForm.controls['email'].dirty || profileForm.controls['email'].touched)">atleast one uppercase, one lowercase,1special character,1 digit,minlength =8</span>
   </label>
   <br>
   <br>
   <label>
     ContactNo:
-    <input type="text" formControlName="contactno" maxlength="10" required>
-    <span *ngIf="!profileForm.controls['contactno'].valid">*</span>
-  </label>
+    <input type="text" formControlName="contactno"  minlength="10" maxlength="10" required>
+    <span style="color:Red" ng-show="profileForm.contactno.error.required">* </span>
+    <span *ngIf="!profileForm.controls['contactno'].valid &&
+    ( profileForm.controls['contactno'].dirty || profileForm.controls['contactno'].touched)">onlyDigits</span>
+ </label>
   <br>
   <br>
   <label>
     Password:
-    <input type="password" formControlName="pass">
-    <span *ngIf="!profileForm.controls['pass'].valid">*</span>
-  </label>
+    <input type="password" formControlName="pass" maxlength="16" minlength="8">
+    <span style="color:Red" ng-show="profileForm.password.error.required">* </span>
+    <span *ngIf="!profileForm.controls['pass'].valid &&
+    ( profileForm.controls['pass'].dirty || profileForm.controls['pass'].touched)">min 8 , max 16, at least one special character, at least one uppercase, at least one lowercase, at least one number</span>
+</label>
   <br>
   <br>
   <label>
     ConfirmPassword:
-    <input type="password" formControlName="confirmpassword" (keyup)="functiontest()">
-    <span *ngIf="!profileForm.controls['confirmpassword'].valid">*</span>
+    <input type="password" formControlName="confirmpassword" (keyup)="functiontest()" maxlength="16" minlength="8">
+    <span style="color:Red" ng-show="profileForm.confirmpassword.error.required">* </span>
+    <span *ngIf="!profileForm.controls['confirmpassword'].valid &&
+    ( profileForm.controls['confirmpassword'].dirty || profileForm.controls['confirmpassword'].touched)">min 8 , max 16, at least one special character, at least one uppercase, at least one lowercase, at least one number</span>
   </label>
   <br>
   <br>
   <label>
     Gender:
-    <input type="text" maxlength="10" formControlName="gender">
-    <span *ngIf="!profileForm.controls['gender'].valid">*</span>
+    <input type="text" maxlength="6" formControlName="gender">
+    <span style="color:Red" ng-show="profileForm.gender.error.required">* </span>
+    <span *ngIf="!profileForm.controls['gender'].valid &&
+    ( profileForm.controls['gender'].dirty || profileForm.controls['gender'].touched)"> only F, M, female, male, Female, Male</span>
   </label>
   <br>
   <br>
   <label>
     EmpId:
     <input type="text" maxlength="4" formControlName="EmpId">
-    <span *ngIf="!profileForm.controls['EmpId'].valid">*</span>
-  </label>
+    <span style="color:Red" ng-show="profileForm.EmpId.error.required">* </span>
+    <span *ngIf="!profileForm.controls['EmpId'].valid &&
+    ( profileForm.controls['EmpId'].dirty || profileForm.controls['EmpId'].touched)">onlydigits</span>
+ </label>
   <br>
   <br>
-  <button (click)='onButtonClick()' type="submit">Submit</button>
-
-  <!-- <button (click)='onButtonClick()'type="submit" [disabled]="!profileForm.valid">Submit</button> -->
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>

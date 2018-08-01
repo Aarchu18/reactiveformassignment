@@ -1,31 +1,60 @@
-<p>
-  showdetail works!
-</p>
-<table id="detailTable">
+<table id="detailTable" align="center">
   <tr>
-    <th>FirstName: </th>
-    <th>LastName: </th>
-    <th>Email: </th>
-    <th>ContactNo:</th>
-    <th>Password:</th>
-    <th>ConfirmPassword:</th>
-    <th>Gender:</th>
-    <th>EmpId:</th>
-  </tr><br>
+    <td>
+      <b>FirstName: </b>
+    </td>
+    <td>{{data1.firstName}}</td>
+  </tr>
   <tr>
-    <th>{{data1.firstName}}</th>
-    <th>{{data1.lastName}}</th>
-    <th>{{data1.email}}</th>
-    <th>{{data1.contactno}}</th>
-    <th>{{data1.pass}}</th>
-    <th>{{data1.confirmpassword}}</th>
-    <th>{{data1.gender}}</th>
-    <th>{{data1.EmpId}}</th>
-    
+    <td>
+      <b>LastName: </b>
+    </td>
+    <td>{{data1.lastName}}</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Email: </b>
+    </td>
+    <td>{{data1.email}}</td>
+  </tr>
+  <tr>
+    <td>
+      <b>ContactNo:</b>
+    </td>
+    <td>{{data1.contactno}}</td>
+  </tr>
+  <tr>
+    <td>
+      <b>Password: </b>
+    </td>
+    <td>
+      <input type={{eye}} disabled value={{data1.pass}}/>
+      <span (click)="eyefunction()" class="glyphicon glyphicon-eye-open"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>ConfirmPassword: </b>
+    </td>
+    <td><input type={{eye}} disabled value={{data1.confirmpassword}}/>
+        <span (click)="eyefunction()"></span>
+    </td>
+  </tr> 
+  <tr>
+    <td>
+      <b>Gender: </b>
+    </td>
+    <td>{{data1.gender}}</td>
+  </tr>
+  <tr>
+    <td>
+      <b>EmpId: </b>
+    </td>
+    <td>{{data1.EmpId}}</td>
   </tr>
 </table>
 <br>
 <br>
-
-<button (click)='onButtonClick1()' type="submit">Submit</button>
-
+<div class="editbtn">
+  <button (click)='onButtonClick1()' type="submit">EditDetail</button>
+</div>
