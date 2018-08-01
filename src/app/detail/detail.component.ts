@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import{Router}from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
+
 
 export class DetailComponent implements OnInit {
 
@@ -22,45 +23,41 @@ export class DetailComponent implements OnInit {
     gender: new FormControl('', [Validators.required, Validators.maxLength(15), Validators.pattern("^[a-zA-Z]*$")]),
     EmpId: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.minLength(4), Validators.pattern('[0-9]*')]),
   });
-  constructor(private routes:Router) { 
+  constructor(private routes: Router) {
 
   }
-  
+
   onButtonClick() {
     localStorage.setItem("data", JSON.stringify(this.profileForm.value));
     this.routes.navigate(['/showdetail']);
   }
-  functiontest(){
-    if(this.profileForm.value.pass !== this.profileForm.value.confirmpassword)
-    {
+  functiontest() {
+    if (this.profileForm.value.pass !== this.profileForm.value.confirmpassword) {
       console.log("Invalid");
     }
-    else{
+    else {
       console.log("valid");
     }
   }
-     
-   ngOnInit() {
-    if(this.routes.url==='/detail')
-    
-    {
-     var data2=JSON.parse(localStorage.getItem("profileForm"));
-    console.log(data2);
+
+  ngOnInit() {
+    if (this.routes.url === '/detail') {
+      let data2 = JSON.parse(localStorage.getItem("data"));
+      console.log(data2);
       console.log("yes");
       this.profileForm.patchValue({
         firstName: data2.firstName,
         lastName: data2.lastName,
-        email:data2.email,
-        contactno:data2.contactno,
-        pass:data2.pass,
-        confirmpassword:data2.confirmpassword,
-        gender:data2.gender,
-        EmpId:data2.EmpId
-        
+        email: data2.email,
+        contactno: data2.contactno,
+        pass: data2.pass,
+        confirmpassword: data2.confirmpassword,
+        gender: data2.gender,
+        EmpId: data2.EmpId
+
       });
     }
-    else
-    {
+    else {
       console.log("No");
     }
 
