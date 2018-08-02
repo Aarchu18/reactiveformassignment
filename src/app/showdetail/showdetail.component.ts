@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import{AppserviceService} from '../appservice.service';
 @Component({
   selector: 'app-showdetail',
   templateUrl: './showdetail.component.html',
@@ -8,8 +9,8 @@ import { Router } from '@angular/router';
 export class ShowdetailComponent implements OnInit {
   data1;
   eye: string = "password";
-  constructor(private routes: Router) {
-    this.data1 = JSON.parse(localStorage.getItem("data"));
+  constructor(private appServiceObj: AppserviceService,private routes: Router) {
+    this. data1=this.appServiceObj.getFormData();
     console.log("data1");
   }
   onButtonClick1() {
