@@ -2,10 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-
+import { AppserviceService } from './appservice.service';
 import { FormsModule } from '@angular/forms';
-
-
 import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
 import { ShowdetailComponent } from './showdetail/showdetail.component';
@@ -35,7 +33,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AppserviceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
