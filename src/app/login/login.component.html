@@ -1,0 +1,22 @@
+<div class="box">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+    <div class="login-group">
+      <label>
+        EmpId: </label>
+      <span style="color:Red" ng-show="loginForm.empId.error.required">* </span>
+      <input type="text" maxlength="10" class="form-control" formControlName="empId">
+      <div class="alert alert-danger" *ngIf="!loginForm.controls['empId'].valid &&
+      ( loginForm.controls['empId'].dirty || loginForm.controls['empId'].touched)">only alphabet</div>
+
+      <label>
+        Password: </label>
+      <span style="color:Red" ng-show="loginForm.password.error.required">* </span>
+      <input type="password" class="form-control" formControlName="loginPass" maxlength="16" minlength="8">
+
+</div>
+    <br>
+   
+    <button align="center" class="btn btn-success" type="submit" [disabled]="!loginForm.valid ">Submit</button>
+    &nbsp;&nbsp;&nbsp;<span   class="alert alert-danger"*ngIf="!signPassCheck"> Wrong Id or Password</span>
+  </form>
+</div>

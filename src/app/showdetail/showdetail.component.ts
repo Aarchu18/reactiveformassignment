@@ -9,9 +9,9 @@ import{AppserviceService} from '../appservice.service';
 export class ShowdetailComponent implements OnInit {
   data1;
   eye: string = "password";
-  constructor(private appServiceObj: AppserviceService,private routes: Router) {
-    this. data1=this.appServiceObj.getFormData();
-    console.log("data1");
+  constructor(private routes: Router) {
+    this. data1=JSON.parse(localStorage.getItem("data"));
+    // console.log(this.data1);
   }
   onButtonClick1() {
 

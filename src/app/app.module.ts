@@ -8,14 +8,27 @@ import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
 import { ShowdetailComponent } from './showdetail/showdetail.component';
 import { EditdetailComponent } from './editdetail/editdetail.component';
+import { LoginComponent } from './login/login.component';
+import { AuthServiceService } from './auth-service.service';
 const routes: Routes = [
   { path: '', component: DetailComponent },
+  
   {
 
-    path: 'showdetail', component: ShowdetailComponent
+    path: 'showdetail', component: ShowdetailComponent,
+    canActivate:[AuthServiceService]
   },
   {
-    path: 'detail', component: DetailComponent
+    path:'login',
+    component:LoginComponent
+
+ },
+  {
+    path: 'detail', component: DetailComponent,
+    
+  },
+  {
+    path: '**', component: DetailComponent
   }
 
 ];
@@ -25,7 +38,8 @@ const routes: Routes = [
     AppComponent,
     DetailComponent,
     ShowdetailComponent,
-    EditdetailComponent
+    EditdetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

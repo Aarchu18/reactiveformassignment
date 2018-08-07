@@ -26,27 +26,31 @@ export class DetailComponent implements OnInit {
   }
 
   onSubmit() {
-    // localStorage.setItem("data", JSON.stringify(this.profileForm.value));
-    this.appServiceObj.setFormData(this.profileForm.value);
-    this.routes.navigate(['/showdetail']);
+  
+     localStorage.setItem("data", JSON.stringify(this.profileForm.value));
+    // console.log("sdfghj");
+    // this.appServiceObj.setFormData(this.profileForm.value);
+    this.routes.navigate(['/login']);
   }
 
 
   functiontest() {
     if (this.profileForm.value.pass !== this.profileForm.value.confirmpassword) {
       this.passwordCheck = false;
+      console.log("no");
     }
     else {
       this.passwordCheck = true;
+      console.log("yes");
     }
   }
 
   ngOnInit() {
     if (this.routes.url === '/detail') {
-      // let data2 = JSON.parse(localStorage.getItem("data"));
-      let data2=this.appServiceObj.getFormData();
-      console.log(data2);
-      console.log("yes");
+       let data2 = JSON.parse(localStorage.getItem("data"));
+      // let data2=this.appServiceObj.getFormData();
+      // console.log(data2);
+      // console.log("yes");
       this.profileForm.patchValue({
         firstName: data2.firstName,
         lastName: data2.lastName,
@@ -58,12 +62,15 @@ export class DetailComponent implements OnInit {
         EmpId: data2.EmpId
 
       });
-    }
+    } 
     else {
-      console.log("No");
+      // console.log("No");
     }
 
+    localStorage.setItem("isLoggedIn","false");
+
   }
+
 
 
 }
