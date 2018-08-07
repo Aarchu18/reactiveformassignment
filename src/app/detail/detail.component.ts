@@ -67,7 +67,7 @@ export class DetailComponent implements OnInit {
       // console.log("No");
     }
 
-    localStorage.setItem("isLoggedIn","false");
+  
 
   }
 

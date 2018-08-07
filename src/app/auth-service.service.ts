@@ -9,10 +9,10 @@ export class AuthServiceService {
   constructor(private route:Router){}
   canActivate() {
     console.log("can activte call"+localStorage.getItem("isLoggedIn"));
-      if (!localStorage.getItem("isLoggedIn")) {
+      if (localStorage.getItem("isLoggedIn")) {
       // if(localStorage.profileForm.value.EmpId == localStorage.)
 
-return true;
+        return true;
 
     }
     else{
